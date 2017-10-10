@@ -3,23 +3,23 @@
 
 import numpy as np
 
-def loadData():
-    X_train = np.genfromtxt('X_train.csv', delimiter = ',')
-    Y_train = np.genfromtxt('Y_train.csv', delimiter = ',')
-    X_test = np.genfromtxt('X_test.csv', delimiter = ',')
-    Y_test = np.genfromtxt('Y_test.csv', delimiter = ',')
+def load_data():
+    X_train = np.genfromtxt('X_train.csv', delimiter=',')
+    Y_train = np.genfromtxt('Y_train.csv', delimiter=',')
+    X_test = np.genfromtxt('X_test.csv', delimiter=',')
+    Y_test = np.genfromtxt('Y_test.csv', delimiter=',')
     return X_train.T, Y_train.reshape(Y_train.shape[0], 1).T, X_test.T, Y_test.reshape(Y_test.shape[0], 1).T
 
-def featureScaling(X_train):
-    minval = np.amin(X_train, axis = 1).reshape(X_train.shape[0], 1)
-    maxval = np.amax(X_train, axis = 1).reshape(X_train.shape[0], 1)
+def feature_scaling(X_train):
+    minval = np.amin(X_train, axis=1).reshape(X_train.shape[0], 1)
+    maxval = np.amax(X_train, axis=1).reshape(X_train.shape[0], 1)
     X_train = (X_train - minval) / (maxval - minval)
     return X_train, minval, maxval
 
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 
-def FFBP(X_train, Y_train, X_test, Y_test, learning_rate, epoch):
+def feedforward_backprop(X_train, Y_train, X_test, Y_test, learning_rate, epoch):
     m = X_train.shape[1]
     n = X_train.shape[0]
     W = np.zeros((n, 1))
@@ -42,7 +42,7 @@ def FFBP(X_train, Y_train, X_test, Y_test, learning_rate, epoch):
 
 learning_rate = 0.3
 epoch = 3600
-X_train, Y_train, X_test, Y_test = loadData()
+X_train, Y_train, X_test, Y_test = load_data()
 X_train, minval, maxval = featureScaling(X_train)
 X_test = (X_test - minval) / (maxval - minval)
-W, b = FFBP(X_train, Y_train, X_test, Y_test, learning_rate, epoch)
+W, b = feedforward_backprop(X_train, Y_train, X_test, Y_test, learning_rate, epoch)
