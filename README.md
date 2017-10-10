@@ -1,1 +1,1 @@
-# Breast_Cancer_Wisconsin_Diagnostic_dataset_Logistic_Regression
+# Breast_Cancer_Wisconsin_Diagnostic_dataset_By_Logistic_Regression
