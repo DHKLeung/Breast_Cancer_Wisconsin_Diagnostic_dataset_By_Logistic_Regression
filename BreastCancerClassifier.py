@@ -43,6 +43,6 @@ def feedforward_backprop(X_train, Y_train, X_test, Y_test, learning_rate, epoch)
 learning_rate = 0.3
 epoch = 3600
 X_train, Y_train, X_test, Y_test = load_data()
-X_train, minval, maxval = featureScaling(X_train)
+X_train, minval, maxval = feature_scaling(X_train)
 X_test = (X_test - minval) / (maxval - minval)
 W, b = feedforward_backprop(X_train, Y_train, X_test, Y_test, learning_rate, epoch)
