@@ -38,7 +38,6 @@ def FFBP(X_train, Y_train, X_test, Y_test, learning_rate, epoch):
         J_t = -np.mean(np.multiply(Y_test, np.log(A_t)) + np.multiply((1 - Y_test), np.log(1 - A_t))) 
         acc_t = np.mean(((A_t > 0.5) == Y_test).astype(float)) * 100.0 
         print('Iter: ', i + 1, 'Train Cost: ', J, 'Test Cost: ', J_t, 'Train Accuracy: ', acc, '%', 'Test Accuracy: ', acc_t, '%')
-
     return W, b
 
 learning_rate = 0.3
